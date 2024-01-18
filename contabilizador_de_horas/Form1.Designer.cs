@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            button1 = new Button();
-            button2 = new Button();
-            label1 = new Label();
-            button3 = new Button();
+            btnIniciar = new Button();
+            btnPausar = new Button();
+            txtTimer = new Label();
+            btnParar = new Button();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
             label2 = new Label();
@@ -97,55 +98,57 @@
             pesquisarToolStripMenuItem1 = new ToolStripMenuItem();
             toolStripSeparator11 = new ToolStripSeparator();
             sobreToolStripMenuItem1 = new ToolStripMenuItem();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // btnIniciar
             // 
-            button1.BackColor = Color.SeaGreen;
-            button1.ForeColor = SystemColors.Control;
-            button1.Location = new Point(164, 304);
-            button1.Name = "button1";
-            button1.Size = new Size(275, 109);
-            button1.TabIndex = 0;
-            button1.Text = "Iniciar";
-            button1.UseVisualStyleBackColor = false;
+            btnIniciar.BackColor = Color.SeaGreen;
+            btnIniciar.ForeColor = SystemColors.Control;
+            btnIniciar.Location = new Point(164, 304);
+            btnIniciar.Name = "btnIniciar";
+            btnIniciar.Size = new Size(275, 109);
+            btnIniciar.TabIndex = 0;
+            btnIniciar.Text = "Iniciar";
+            btnIniciar.UseVisualStyleBackColor = false;
+            btnIniciar.Click += btnIniciar_Click;
             // 
-            // button2
+            // btnPausar
             // 
-            button2.BackColor = Color.DarkOrange;
-            button2.ForeColor = SystemColors.Control;
-            button2.Location = new Point(164, 436);
-            button2.Name = "button2";
-            button2.Size = new Size(275, 107);
-            button2.TabIndex = 1;
-            button2.Text = "Pausar";
-            button2.UseVisualStyleBackColor = false;
+            btnPausar.BackColor = Color.DarkOrange;
+            btnPausar.ForeColor = SystemColors.Control;
+            btnPausar.Location = new Point(164, 436);
+            btnPausar.Name = "btnPausar";
+            btnPausar.Size = new Size(275, 107);
+            btnPausar.TabIndex = 1;
+            btnPausar.Text = "Pausar";
+            btnPausar.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // txtTimer
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Stencil", 80.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(134, 132);
-            label1.Name = "label1";
-            label1.Size = new Size(333, 127);
-            label1.TabIndex = 2;
-            label1.Text = "00:00";
-            label1.Click += label1_Click;
+            txtTimer.AutoSize = true;
+            txtTimer.Font = new Font("Stencil", 80.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTimer.Location = new Point(62, 125);
+            txtTimer.Name = "txtTimer";
+            txtTimer.Size = new Size(490, 127);
+            txtTimer.TabIndex = 2;
+            txtTimer.Text = "00:00:00";
             // 
-            // button3
+            // btnParar
             // 
-            button3.BackColor = Color.DarkRed;
-            button3.ForeColor = SystemColors.Control;
-            button3.Location = new Point(164, 566);
-            button3.Name = "button3";
-            button3.Size = new Size(275, 107);
-            button3.TabIndex = 3;
-            button3.Text = "Parar";
-            button3.UseVisualStyleBackColor = false;
+            btnParar.BackColor = Color.DarkRed;
+            btnParar.ForeColor = SystemColors.Control;
+            btnParar.Location = new Point(164, 566);
+            btnParar.Name = "btnParar";
+            btnParar.Size = new Size(275, 107);
+            btnParar.TabIndex = 3;
+            btnParar.Text = "Parar";
+            btnParar.UseVisualStyleBackColor = false;
+            btnParar.Click += btnParar_Click;
             // 
             // pictureBox1
             // 
@@ -156,6 +159,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // panel1
             // 
@@ -203,7 +207,7 @@
             novaToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             novaToolStripMenuItem.Name = "novaToolStripMenuItem";
             novaToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
-            novaToolStripMenuItem.Size = new Size(32, 19);
+            novaToolStripMenuItem.Size = new Size(180, 22);
             novaToolStripMenuItem.Text = "&Nova";
             // 
             // abrirToolStripMenuItem
@@ -212,13 +216,13 @@
             abrirToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
             abrirToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            abrirToolStripMenuItem.Size = new Size(32, 19);
+            abrirToolStripMenuItem.Size = new Size(180, 22);
             abrirToolStripMenuItem.Text = "&Abrir";
             // 
             // toolStripSeparator
             // 
             toolStripSeparator.Name = "toolStripSeparator";
-            toolStripSeparator.Size = new Size(6, 6);
+            toolStripSeparator.Size = new Size(177, 6);
             // 
             // salvarToolStripMenuItem
             // 
@@ -226,19 +230,19 @@
             salvarToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             salvarToolStripMenuItem.Name = "salvarToolStripMenuItem";
             salvarToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
-            salvarToolStripMenuItem.Size = new Size(32, 19);
+            salvarToolStripMenuItem.Size = new Size(180, 22);
             salvarToolStripMenuItem.Text = "&Salvar";
             // 
             // salvarComoToolStripMenuItem
             // 
             salvarComoToolStripMenuItem.Name = "salvarComoToolStripMenuItem";
-            salvarComoToolStripMenuItem.Size = new Size(32, 19);
+            salvarComoToolStripMenuItem.Size = new Size(180, 22);
             salvarComoToolStripMenuItem.Text = "Salvar &Como";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 6);
+            toolStripSeparator1.Size = new Size(177, 6);
             // 
             // imprimirToolStripMenuItem
             // 
@@ -246,7 +250,7 @@
             imprimirToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
             imprimirToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.P;
-            imprimirToolStripMenuItem.Size = new Size(32, 19);
+            imprimirToolStripMenuItem.Size = new Size(180, 22);
             imprimirToolStripMenuItem.Text = "&Imprimir";
             // 
             // visualizarImpressãoToolStripMenuItem
@@ -254,18 +258,18 @@
             visualizarImpressãoToolStripMenuItem.Image = (Image)resources.GetObject("visualizarImpressãoToolStripMenuItem.Image");
             visualizarImpressãoToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             visualizarImpressãoToolStripMenuItem.Name = "visualizarImpressãoToolStripMenuItem";
-            visualizarImpressãoToolStripMenuItem.Size = new Size(32, 19);
+            visualizarImpressãoToolStripMenuItem.Size = new Size(180, 22);
             visualizarImpressãoToolStripMenuItem.Text = "Visualizar Im&pressão";
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 6);
+            toolStripSeparator2.Size = new Size(177, 6);
             // 
             // sairToolStripMenuItem
             // 
             sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            sairToolStripMenuItem.Size = new Size(32, 19);
+            sairToolStripMenuItem.Size = new Size(180, 22);
             sairToolStripMenuItem.Text = "S&air";
             // 
             // editarToolStripMenuItem
@@ -279,20 +283,20 @@
             // 
             desfazerToolStripMenuItem.Name = "desfazerToolStripMenuItem";
             desfazerToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Z;
-            desfazerToolStripMenuItem.Size = new Size(32, 19);
+            desfazerToolStripMenuItem.Size = new Size(159, 22);
             desfazerToolStripMenuItem.Text = "&Desfazer";
             // 
             // refazerToolStripMenuItem
             // 
             refazerToolStripMenuItem.Name = "refazerToolStripMenuItem";
             refazerToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Y;
-            refazerToolStripMenuItem.Size = new Size(32, 19);
+            refazerToolStripMenuItem.Size = new Size(159, 22);
             refazerToolStripMenuItem.Text = "&Refazer";
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 6);
+            toolStripSeparator3.Size = new Size(156, 6);
             // 
             // recortarToolStripMenuItem
             // 
@@ -300,7 +304,7 @@
             recortarToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             recortarToolStripMenuItem.Name = "recortarToolStripMenuItem";
             recortarToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.X;
-            recortarToolStripMenuItem.Size = new Size(32, 19);
+            recortarToolStripMenuItem.Size = new Size(159, 22);
             recortarToolStripMenuItem.Text = "Recor&tar";
             // 
             // copiarToolStripMenuItem
@@ -309,7 +313,7 @@
             copiarToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
             copiarToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.C;
-            copiarToolStripMenuItem.Size = new Size(32, 19);
+            copiarToolStripMenuItem.Size = new Size(159, 22);
             copiarToolStripMenuItem.Text = "&Copiar";
             // 
             // colarToolStripMenuItem
@@ -318,18 +322,18 @@
             colarToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             colarToolStripMenuItem.Name = "colarToolStripMenuItem";
             colarToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.V;
-            colarToolStripMenuItem.Size = new Size(32, 19);
+            colarToolStripMenuItem.Size = new Size(159, 22);
             colarToolStripMenuItem.Text = "&Colar";
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 6);
+            toolStripSeparator4.Size = new Size(156, 6);
             // 
             // selecionarTudoToolStripMenuItem
             // 
             selecionarTudoToolStripMenuItem.Name = "selecionarTudoToolStripMenuItem";
-            selecionarTudoToolStripMenuItem.Size = new Size(32, 19);
+            selecionarTudoToolStripMenuItem.Size = new Size(159, 22);
             selecionarTudoToolStripMenuItem.Text = "Selecionar &Tudo";
             // 
             // ferramentasToolStripMenuItem
@@ -342,13 +346,13 @@
             // personalizarToolStripMenuItem
             // 
             personalizarToolStripMenuItem.Name = "personalizarToolStripMenuItem";
-            personalizarToolStripMenuItem.Size = new Size(32, 19);
+            personalizarToolStripMenuItem.Size = new Size(137, 22);
             personalizarToolStripMenuItem.Text = "&Personalizar";
             // 
             // opçõesToolStripMenuItem
             // 
             opçõesToolStripMenuItem.Name = "opçõesToolStripMenuItem";
-            opçõesToolStripMenuItem.Size = new Size(32, 19);
+            opçõesToolStripMenuItem.Size = new Size(137, 22);
             opçõesToolStripMenuItem.Text = "&Opções";
             // 
             // ajudaToolStripMenuItem
@@ -361,30 +365,30 @@
             // sumárioToolStripMenuItem
             // 
             sumárioToolStripMenuItem.Name = "sumárioToolStripMenuItem";
-            sumárioToolStripMenuItem.Size = new Size(32, 19);
+            sumárioToolStripMenuItem.Size = new Size(124, 22);
             sumárioToolStripMenuItem.Text = "&Sumário";
             // 
             // índiceToolStripMenuItem
             // 
             índiceToolStripMenuItem.Name = "índiceToolStripMenuItem";
-            índiceToolStripMenuItem.Size = new Size(32, 19);
+            índiceToolStripMenuItem.Size = new Size(124, 22);
             índiceToolStripMenuItem.Text = "&Índice";
             // 
             // pesquisarToolStripMenuItem
             // 
             pesquisarToolStripMenuItem.Name = "pesquisarToolStripMenuItem";
-            pesquisarToolStripMenuItem.Size = new Size(32, 19);
+            pesquisarToolStripMenuItem.Size = new Size(124, 22);
             pesquisarToolStripMenuItem.Text = "&Pesquisar";
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 6);
+            toolStripSeparator5.Size = new Size(121, 6);
             // 
             // sobreToolStripMenuItem
             // 
             sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            sobreToolStripMenuItem.Size = new Size(32, 19);
+            sobreToolStripMenuItem.Size = new Size(124, 22);
             sobreToolStripMenuItem.Text = "&Sobre...";
             // 
             // menuStrip2
@@ -488,26 +492,26 @@
             // desfazerToolStripMenuItem1
             // 
             desfazerToolStripMenuItem1.Name = "desfazerToolStripMenuItem1";
-            desfazerToolStripMenuItem1.Size = new Size(32, 19);
+            desfazerToolStripMenuItem1.Size = new Size(158, 22);
             desfazerToolStripMenuItem1.Text = "&Desfazer";
             // 
             // refazerToolStripMenuItem1
             // 
             refazerToolStripMenuItem1.Name = "refazerToolStripMenuItem1";
-            refazerToolStripMenuItem1.Size = new Size(32, 19);
+            refazerToolStripMenuItem1.Size = new Size(158, 22);
             refazerToolStripMenuItem1.Text = "&Refazer";
             // 
             // toolStripSeparator9
             // 
             toolStripSeparator9.Name = "toolStripSeparator9";
-            toolStripSeparator9.Size = new Size(6, 6);
+            toolStripSeparator9.Size = new Size(155, 6);
             // 
             // recortarToolStripMenuItem1
             // 
             recortarToolStripMenuItem1.Image = (Image)resources.GetObject("recortarToolStripMenuItem1.Image");
             recortarToolStripMenuItem1.ImageTransparentColor = Color.Magenta;
             recortarToolStripMenuItem1.Name = "recortarToolStripMenuItem1";
-            recortarToolStripMenuItem1.Size = new Size(32, 19);
+            recortarToolStripMenuItem1.Size = new Size(158, 22);
             recortarToolStripMenuItem1.Text = "Recor&tar";
             // 
             // copiarToolStripMenuItem1
@@ -515,7 +519,7 @@
             copiarToolStripMenuItem1.Image = (Image)resources.GetObject("copiarToolStripMenuItem1.Image");
             copiarToolStripMenuItem1.ImageTransparentColor = Color.Magenta;
             copiarToolStripMenuItem1.Name = "copiarToolStripMenuItem1";
-            copiarToolStripMenuItem1.Size = new Size(32, 19);
+            copiarToolStripMenuItem1.Size = new Size(158, 22);
             copiarToolStripMenuItem1.Text = "&Copiar";
             // 
             // colarToolStripMenuItem1
@@ -523,18 +527,18 @@
             colarToolStripMenuItem1.Image = (Image)resources.GetObject("colarToolStripMenuItem1.Image");
             colarToolStripMenuItem1.ImageTransparentColor = Color.Magenta;
             colarToolStripMenuItem1.Name = "colarToolStripMenuItem1";
-            colarToolStripMenuItem1.Size = new Size(32, 19);
+            colarToolStripMenuItem1.Size = new Size(158, 22);
             colarToolStripMenuItem1.Text = "&Colar";
             // 
             // toolStripSeparator10
             // 
             toolStripSeparator10.Name = "toolStripSeparator10";
-            toolStripSeparator10.Size = new Size(6, 6);
+            toolStripSeparator10.Size = new Size(155, 6);
             // 
             // selecionarTudoToolStripMenuItem1
             // 
             selecionarTudoToolStripMenuItem1.Name = "selecionarTudoToolStripMenuItem1";
-            selecionarTudoToolStripMenuItem1.Size = new Size(32, 19);
+            selecionarTudoToolStripMenuItem1.Size = new Size(158, 22);
             selecionarTudoToolStripMenuItem1.Text = "Selecionar &Tudo";
             // 
             // ferramentasToolStripMenuItem1
@@ -547,13 +551,13 @@
             // personalizarToolStripMenuItem1
             // 
             personalizarToolStripMenuItem1.Name = "personalizarToolStripMenuItem1";
-            personalizarToolStripMenuItem1.Size = new Size(180, 22);
+            personalizarToolStripMenuItem1.Size = new Size(137, 22);
             personalizarToolStripMenuItem1.Text = "&Personalizar";
             // 
             // opçõesToolStripMenuItem1
             // 
             opçõesToolStripMenuItem1.Name = "opçõesToolStripMenuItem1";
-            opçõesToolStripMenuItem1.Size = new Size(180, 22);
+            opçõesToolStripMenuItem1.Size = new Size(137, 22);
             opçõesToolStripMenuItem1.Text = "&Opções";
             // 
             // ajudaToolStripMenuItem1
@@ -566,31 +570,35 @@
             // sumárioToolStripMenuItem1
             // 
             sumárioToolStripMenuItem1.Name = "sumárioToolStripMenuItem1";
-            sumárioToolStripMenuItem1.Size = new Size(32, 19);
+            sumárioToolStripMenuItem1.Size = new Size(124, 22);
             sumárioToolStripMenuItem1.Text = "&Sumário";
             // 
             // índiceToolStripMenuItem1
             // 
             índiceToolStripMenuItem1.Name = "índiceToolStripMenuItem1";
-            índiceToolStripMenuItem1.Size = new Size(32, 19);
+            índiceToolStripMenuItem1.Size = new Size(124, 22);
             índiceToolStripMenuItem1.Text = "&Índice";
             // 
             // pesquisarToolStripMenuItem1
             // 
             pesquisarToolStripMenuItem1.Name = "pesquisarToolStripMenuItem1";
-            pesquisarToolStripMenuItem1.Size = new Size(32, 19);
+            pesquisarToolStripMenuItem1.Size = new Size(124, 22);
             pesquisarToolStripMenuItem1.Text = "&Pesquisar";
             // 
             // toolStripSeparator11
             // 
             toolStripSeparator11.Name = "toolStripSeparator11";
-            toolStripSeparator11.Size = new Size(6, 6);
+            toolStripSeparator11.Size = new Size(121, 6);
             // 
             // sobreToolStripMenuItem1
             // 
             sobreToolStripMenuItem1.Name = "sobreToolStripMenuItem1";
-            sobreToolStripMenuItem1.Size = new Size(32, 19);
+            sobreToolStripMenuItem1.Size = new Size(124, 22);
             sobreToolStripMenuItem1.Text = "&Sobre...";
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
             // 
             // Form1
             // 
@@ -599,11 +607,11 @@
             BackColor = Color.LemonChiffon;
             ClientSize = new Size(594, 803);
             Controls.Add(panel1);
-            Controls.Add(button3);
-            Controls.Add(label1);
+            Controls.Add(btnParar);
+            Controls.Add(txtTimer);
             Controls.Add(menuStrip2);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnPausar);
+            Controls.Add(btnIniciar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             Text = "Form1";
@@ -620,10 +628,10 @@
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private Label label1;
-        private Button button3;
+        private Button btnIniciar;
+        private Button btnPausar;
+        private Label txtTimer;
+        private Button btnParar;
         private PictureBox pictureBox1;
         private Panel panel1;
         private Label label2;
@@ -688,5 +696,6 @@
         private ToolStripMenuItem pesquisarToolStripMenuItem1;
         private ToolStripSeparator toolStripSeparator11;
         private ToolStripMenuItem sobreToolStripMenuItem1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
