@@ -614,6 +614,7 @@
             Controls.Add(btnIniciar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
